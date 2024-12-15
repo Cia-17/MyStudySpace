@@ -4,3 +4,10 @@ AppData/
 node_modules/
 .vscode/
 *.log
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*.swp
