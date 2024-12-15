@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.2/mammoth.browser.min.js"></script>
+    <title>Cozyy space</title>
+  </head>
+  <body>
+    <div>
+      <button class="header-button" id="journal-entry-btn">
+        <img src="media/files_icon-removebg-preview.png" alt="" />
+      </button>
+      <button class="header-button" id="about-button">
+        <img src="media/mail_icon-removebg-preview.png" alt="" />
+      </button>
+      <button class="header-button" id="music-button">
+        <img src="media/music_icon-removebg-preview.png" alt="" />
+      </button>
+      <button class="header-button" id="pomodoro-button">
+        <img src="media/clock_icon-removebg-preview.png" alt="" />
+      </button>
+      <button class="header-button" id="todo-button">
+        <img src="media/notes_icon-removebg-preview.png" alt="" />
+      </button>
+      <button class="header-button" id="addStickerButton">
+        <img src="media/el_gato_con_gafas__0-removebg-preview.png" alt="" />
+      </button>
+      <!-- Button to open the YouTube video selection modal -->
+      <button class="header-button" id="addVideoButton">
+        <img src="media/youtube_icon__1_-removebg-preview.png" alt="" />
+      </button>
+      <button id="background-change-btn" class="header-button">
+        <img
+          src="media/Brush_Clipart_PNG_Images__Vector_Drawing_Brush_Icon__Drawing_Icons__Brush_Icons__Bursh_PNG_Image_For_Free_Download-removebg-preview.png"
+          alt="chnage background"
+        />
+      </button>
+    </div>
+
+    <!--Youtube popup-->
+    <div class="modal" id="videoModal">
+      <div class="modal-content">
+        <label for="youtubeLink">YouTube Link:</label>
+        <input
+          type="text"
+          id="youtubeLink"
+          placeholder="Enter YouTube URL"
+          required
+        />
+        <label for="videoWidth">Width:</label>
+        <input type="number" id="videoWidth" placeholder="Enter width (px)" />
+        <label for="videoHeight">Height:</label>
+        <input type="number" id="videoHeight" placeholder="Enter height (px)" />
+        <button id="insertVideoButton">Insert Video</button>
+      </div>
+    </div>
+
+    <!--Sticker popup-->
+    <div class="modal" id="stickerModal">
+      <div class="modal-content">
+        <p>Select a Sticker:</p>
+        <div>
+          <img
+            src="media/Hirono_x_The_Little_Prince__1_-removebg-preview.png"
+            class="preset-sticker"
+            alt="Sticker 1"
+            style="cursor: pointer"
+            width="100px"
+          />
+          <img
+            src="https://via.placeholder.com/100?text=Sticker2"
+            class="preset-sticker"
+            alt="Sticker 2"
+            style="cursor: pointer"
+          />
+        </div>
+        <p>Or upload your own:</p>
+        <input type="file" id="stickerUpload" accept="image/*" />
+      </div>
+    </div>
+
+    <!-- Modal for To-Do List -->
+    <div id="todo-modal" class="modal">
+      <div class="modal-content">
+        <h4>Create To-Do List</h4>
+        <input type="text" id="todo-title" placeholder="List Title" />
+        <textarea
+          id="todo-tasks"
+          placeholder="Enter tasks here. (Hitting enter create a new task!)"
+        ></textarea>
+        <br />
+        <!-- Color selector -->
+        <label for="todo-color">Select a colour</label>
+        <input type="color" id="todo-color" value="#f1f1f1" />
+
+        <button id="add-todo-list">Add List</button>
+      </div>
+    </div>
+
+    <!-- Container for To-Do Lists -->
+    <div id="todo-lists-container"></div>
+
+    <!--Pomodoro timer-->
+    <!-- Pomodoro Modal -->
+    <div id="pomodoro-modal" class="modal">
+      <div class="modal-content">
+        <h3>Pomodoro Timer</h3>
+        <div>
+          <label for="pomodoro-time">Timer Time:</label>
+          <input type="text" id="pomodoro-time" value="25:00" />
+        </div>
+        <div>
+          <label for="pomodoro-sound">Select sound for alarm:</label>
+
+          <input type="file" id="pomodoro-upload" accept="audio/*" />
+        </div>
+        <div>
+          <button id="start-timer">Start</button>
+          <button id="pause-timer" disabled>Pause</button>
+          <button id="stop-timer">Stop</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Music Player Modal -->
+    <div id="music-modal" class="modal">
+      <div class="modal-content">
+        <h3>Upload Music</h3>
+        <input type="file" id="music-upload" accept="audio/*" />
+        <div class="controls">
+          <button id="play-music">Play</button>
+          <button id="pause-music" disabled>Pause</button>
+          <button id="stop-music">Stop</button>
+        </div>
+        <div class="progress-bar">
+          <input type="range" id="music-progress" value="0" max="100" />
+          <span id="music-time">0:00 / 0:00</span>
+        </div>
+
+        <div id="animation-container"></div>
+      </div>
+    </div>
+
+    <!-- About Me Modal (reuse existing modal structure) -->
+    <div id="about-modal" class="modal">
+      <div class="modal-content">
+        <span id="close-about" class="close">&times;</span>
+        <h2>About Me</h2>
+        <p class="about-me-message">
+          Hello! I'm
+          <a
+            href="https://www.linkedin.com/in/lawrencia-kyei-baffour/"
+            target="_blank"
+            class="linkedinlook"
+            >Lawrencia :) </a
+          >, and welcome to my <em>MystudySpace.</em> This space is dedicated to
+          helping you stay productive! To navigate the page, simply click on the
+          buttons at the top, and feel free to interact with the elements. Let
+          me know if you need any help/have any feedback!
+        </p>
+        <br />
+
+        <button id="feedback-btn">Give Feedback</button>
+      </div>
+    </div>
+
+    <!-- Feedback Button -->
+    <!-- Button to open the modal -->
+
+    <!-- The Modal -->
+    <div id="feedback-modal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Feedback Form</h2>
+        <form id="feedback-form">
+          <input
+            type="email"
+            id="user-email"
+            placeholder="Your Email (Optional)"
+          />
+          <textarea
+            id="user-feedback"
+            placeholder="Enter your feedback here..."
+            required
+          ></textarea>
+          <button type="submit">Send Feedback</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Journal entry box that will appear on the page -->
+    <div id="journal-entry-box" class="journal-entry-box" style="display: none">
+      <div class="toolbar">
+        <button id="bold-btn">B</button>
+        <button id="italic-btn">I</button>
+        <button id="underline-btn">U</button>
+        <button id="align-left-btn">Left</button>
+        <button id="align-center-btn">Center</button>
+        <button id="align-right-btn">Right</button>
+        <button id="bullet-btn">Bullet</button>
+      </div>
+      <div
+        id="journal-text"
+        contenteditable="true"
+        class="journal-textarea"
+      ></div>
+      <!-- Color Picker for Journal Entry -->
+      <label for="journal-color-picker">Pick a Color:</label>
+      <input type="color" id="journal-color-picker" value="#ffffff" />
+      <button id="submit-journal-btn">Save Journal Entry</button>
+      <button id="close-journal-btn">Close</button>
+    </div>
+
+    <!-- Container to display the journal entries -->
+    <div id="journal-entry-container"></div>
+
+    <!-- Button to open the background change modal -->
+
+    <!-- Modal for changing background -->
+    <div id="background-change-modal" class="modal">
+      <div class="modal-content">
+        <h3>Change Background</h3>
+
+        <!-- Color Picker -->
+        <label for="background-color-picker">Choose a Background Color:</label>
+        <input type="color" id="background-color-picker" value="#ffffff" />
+
+        <!-- Image Upload -->
+        <label for="background-image-upload">Upload a Background Image:</label>
+        <input type="file" id="background-image-upload" accept="image/*" />
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3.2.0/dist/email.min.js"></script>
+    <!-- Include EmailJS -->
+    <script src="script.js"></script>
+  </body>
+</html>

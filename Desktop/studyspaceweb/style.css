@@ -1,0 +1,361 @@
+body {
+  overflow: auto;
+}
+
+/* General button styles */
+button {
+  margin: 5px;
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+/* Button hover effect */
+button:hover {
+  background-color: #aaa;
+  transform: scale(1.05);
+}
+
+/* Header button styling */
+.header-button {
+  border: 1px solid white;
+  border-radius: 29px;
+  margin: 5px;
+  padding: 5px 8px;
+}
+
+.header-button img {
+  width: 60px;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 300px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1100;
+  padding: 30px;
+}
+
+.modal-content input,
+.modal-content textarea {
+  width: 100%;
+  margin-left: 2px;
+  margin: 10px 0;
+  padding: 7px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.modal-content button {
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.video-container {
+  position: absolute;
+  cursor: move;
+  z-index: 500;
+  padding: 6px;
+}
+
+.modal-content input[type="file"] {
+  display: block;
+  margin: 10px auto;
+}
+
+.sticker {
+  position: absolute;
+  cursor: move;
+  resize: none;
+  overflow: hidden;
+  z-index: 500;
+}
+
+.sticker img {
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/*Sticky note*/
+
+/* To-Do List Styling */
+
+.todo-list {
+  position: absolute;
+  cursor: move;
+  padding: 10px;
+  z-index: 500;
+  width: 200px;
+  height: 150px; /* Set a default height */
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Resizing handle styling */
+.resize-handle {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  width: 12px;
+  height: 12px;
+  background-color: #ccc;
+  cursor: se-resize; /* Diagonal resizing cursor */
+}
+
+.todo-list ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  overflow-y: auto;
+  max-height: 100px; /* Set max height for tasks */
+}
+
+.todo-list li {
+  margin: 5px 0;
+  display: flex;
+  align-items: center;
+}
+
+.todo-list .title {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+#pomodoro-time {
+  font-size: 32px;
+  text-align: center;
+  width: 80px;
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+#pomodoro-sound,
+#pomodoro-upload {
+  width: 100%;
+  margin: 10px 0;
+}
+
+/*music player*/
+.controls button {
+  margin: 5px;
+}
+
+.progress-bar {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+#music-progress {
+  width: 100%;
+}
+
+/* Styling for draggable animations */
+.draggable {
+  position: absolute;
+  cursor: move;
+}
+
+.preview-animation {
+  width: 100px;
+  cursor: pointer;
+}
+
+.animation {
+  position: absolute;
+  width: 150px; /* Default width */
+  height: 150px; /* Default height */
+  cursor: move;
+}
+
+.animation img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.resizer {
+  width: 10px;
+  height: 10px;
+  background: #aaa;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  cursor: se-resize;
+}
+
+/* Modal container styles */
+.journal-entry-box {
+  display: flex;
+  flex-direction: column; /* Stack the elements vertically */
+  align-items: flex-start; /* Align items to the left */
+  padding: 20px;
+  background-color: #fff;
+  width: 600px; /* Increased width */
+  height: 500px; /* Increased height */
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow-y: auto; /* Allow scrolling if content overflows */
+}
+
+/* Toolbar for text formatting buttons */
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  width: 100%; /* Make the toolbar span the entire width */
+  margin-bottom: 10px;
+}
+
+/* Text area where journal content is entered */
+
+#journal-text {
+  width: 100%; /* Ensure it takes up full width of the container */
+  min-height: 200px; /* Set a minimum height */
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  box-sizing: border-box;
+
+  /* Ensure text wraps properly */
+  white-space: normal; /* Prevents text from staying in a single line */
+  word-wrap: break-word; /* Wraps long words */
+  overflow-wrap: break-word; /* Ensures breaking of long words */
+}
+
+#journal-text[contenteditable="true"] {
+  white-space: normal; /* Ensure text wraps inside contenteditable */
+  word-wrap: break-word; /* Break long words into next line */
+  overflow-wrap: break-word; /* Ensure word wrapping */
+  line-height: 1.5; /* Optional: improves readability */
+  word-break: break-all; /* Optional: break overly long words */
+}
+
+/* Journal color picker and save/close buttons */
+.journal-entry-box button {
+  margin-top: 10px; /* Add space between buttons */
+}
+
+/* Color picker label styling */
+#journal-color-picker {
+  margin-top: 10px;
+}
+
+.linkedinlook {
+  text-decoration: none;
+  color: palevioletred;
+}
+.about-me-message {
+  line-height: 25px;
+}
+#music-modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  z-index: 9999;
+}
+
+#music-modal-content {
+  position: relative;
+  width: 400px;
+  height: 300px;
+}
+
+#resize-handle {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  width: 15px;
+  height: 15px;
+  background-color: #ccc;
+  cursor: se-resize;
+}
+/* Define animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+/* Apply animation classes */
+.fadeIn {
+  animation: fadeIn 1s forwards;
+}
+
+.slideIn {
+  animation: slideIn 1s forwards;
+}
+
+.bounce {
+  animation: bounce 1s forwards;
+}
+
+.zoomIn {
+  animation: zoomIn 1s forwards;
+}
+
+/* Add visual feedback when selecting animation */
+.preview-animation.selected {
+  border: 2px solid #4caf50; /* Highlight selected animation */
+  transform: scale(1.05);
+}

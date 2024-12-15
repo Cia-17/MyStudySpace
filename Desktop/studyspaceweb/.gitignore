@@ -1,0 +1,6 @@
+# Ignore unnecessary directories
+AppData/
+.git/
+node_modules/
+.vscode/
+*.log
